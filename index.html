@@ -21,6 +21,15 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
     
+    .category-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+    
     .cart-badge {
       animation: cartPulse 0.3s ease-in-out;
     }
@@ -52,33 +61,63 @@
   <style>@view-transition { navigation: auto; }</style>
  </head>
  <body class="h-full">
-  <div id="app" class="h-full w-full overflow-auto" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;"><!-- Header -->
+  <div id="app" class="h-full w-full overflow-auto" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;"><!-- Header -->
    <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4">
      <div class="flex justify-between items-center">
       <div>
-       <h1 id="store-name" class="text-3xl font-bold" style="color: #667eea;">E-commerce </h1>
+       <h1 id="store-name" class="text-3xl font-bold" style="color: #ec4899;">ShopHub</h1>
        <p id="tagline" class="text-sm" style="color: #6b7280;">Mandeep Verma</p>
       </div>
-      <div class="flex items-center gap-6"><button id="cart-button" class="relative" style="color: #667eea;">
+      <div class="flex items-center gap-6"><button id="cart-button" class="relative" style="color: #ec4899;">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg><span id="cart-count" class="absolute -top-2 -right-2 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center cart-badge" style="background: #f59e0b;">0</span> </button>
+        </svg><span id="cart-count" class="absolute -top-2 -right-2 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center cart-badge" style="background: #ec4899;">0</span> </button>
       </div>
      </div><!-- Category Filter -->
-     <div class="mt-4 flex gap-2 overflow-x-auto pb-2"><button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="all" style="background: #667eea; color: white;">All Products</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="boys" style="background: #e5e7eb; color: #374151;">Boys</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="girls" style="background: #e5e7eb; color: #374151;">Girls</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="men" style="background: #e5e7eb; color: #374151;">Men</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="women" style="background: #e5e7eb; color: #374151;">Women</button>
+     <div class="mt-4 flex gap-2 overflow-x-auto pb-2"><button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="all" style="background: #ec4899; color: white;">All Products</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="boys" style="background: #e5e7eb; color: #374151;">Boys</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="girls" style="background: #e5e7eb; color: #374151;">Girls</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="men" style="background: #e5e7eb; color: #374151;">Men</button> <button class="category-filter px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors" data-category="women" style="background: #e5e7eb; color: #374151;">Women</button>
      </div>
     </div>
    </header><!-- Main Content -->
    <main class="max-w-7xl mx-auto px-4 py-8"><!-- Hero Section -->
     <div id="hero-section" class="bg-white rounded-2xl shadow-xl p-8 mb-8 text-center">
      <h2 class="text-4xl font-bold mb-4" style="color: #1f2937;">Discover Amazing Products</h2>
-     <p class="text-lg mb-6" style="color: #6b7280;">Browse our collection of 150+ products for the whole family</p><button id="cta-button" class="px-8 py-3 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow" style="background: #f59e0b;">Shop Now</button>
+     <p class="text-lg mb-6" style="color: #6b7280;">Browse our collection of 150+ products for the whole family</p><button id="cta-button" class="px-8 py-3 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow mb-8" style="background: #ec4899;">Shop Now</button> <!-- Category Grid -->
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div class="category-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer" data-category="boys" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+       <div class="text-5xl mb-3">
+        👦
+       </div>
+       <h3 class="text-xl font-bold text-white">Boys</h3>
+       <p class="text-sm text-white text-opacity-90">38 Products</p>
+      </div>
+      <div class="category-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer" data-category="girls" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">
+       <div class="text-5xl mb-3">
+        👧
+       </div>
+       <h3 class="text-xl font-bold text-white">Girls</h3>
+       <p class="text-sm text-white text-opacity-90">38 Products</p>
+      </div>
+      <div class="category-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer" data-category="men" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+       <div class="text-5xl mb-3">
+        👨
+       </div>
+       <h3 class="text-xl font-bold text-white">Men</h3>
+       <p class="text-sm text-white text-opacity-90">37 Products</p>
+      </div>
+      <div class="category-card p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer" data-category="women" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+       <div class="text-5xl mb-3">
+        👩
+       </div>
+       <h3 class="text-xl font-bold text-white">Women</h3>
+       <p class="text-sm text-white text-opacity-90">37 Products</p>
+      </div>
+     </div>
     </div><!-- Products Grid -->
     <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"><!-- Products will be rendered here -->
     </div>
    </main><!-- Cart Modal -->
    <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-hidden flex flex-col">
      <div class="p-6 border-b" style="border-color: #e5e7eb;">
       <div class="flex justify-between items-center">
        <h2 class="text-2xl font-bold" style="color: #1f2937;">Shopping Cart</h2><button id="close-cart" class="text-3xl" style="color: #6b7280;">×</button>
@@ -87,8 +126,8 @@
      <div id="cart-items" class="flex-1 overflow-y-auto p-6"><!-- Cart items will be rendered here -->
      </div>
      <div class="p-6 border-t" style="border-color: #e5e7eb;">
-      <div class="flex justify-between items-center mb-4"><span class="text-xl font-semibold" style="color: #1f2937;">Total:</span> <span id="cart-total" class="text-2xl font-bold" style="color: #667eea;">$0.00</span>
-      </div><button id="checkout-button" class="w-full py-3 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow" style="background: #10b981;">Proceed to Checkout</button>
+      <div class="flex justify-between items-center mb-4"><span class="text-xl font-semibold" style="color: #1f2937;">Total:</span> <span id="cart-total" class="text-2xl font-bold" style="color: #ec4899;">$0.00</span>
+      </div><button id="checkout-button" class="w-full py-3 rounded-full text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow" style="background: #8b5cf6;">Proceed to Checkout</button>
      </div>
     </div>
    </div><!-- Checkout Modal -->
@@ -106,13 +145,48 @@
       </div>
       <div class="mb-6"><label for="customer-phone" class="block text-sm font-medium mb-2" style="color: #374051;">Phone Number</label> <input type="tel" id="customer-phone" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2" style="border-color: #d1d5db; color: #1f2937;">
       </div>
-      <div class="flex gap-3"><button type="button" id="cancel-checkout" class="flex-1 py-3 rounded-full font-semibold border-2 transition-colors" style="border-color: #d1d5db; color: #374151;">Cancel</button> <button type="submit" class="flex-1 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-shadow" style="background: #10b981;">Complete Order</button>
+      <div class="flex gap-3"><button type="button" id="cancel-checkout" class="flex-1 py-3 rounded-full font-semibold border-2 transition-colors" style="border-color: #d1d5db; color: #374151;">Cancel</button> <button type="submit" class="flex-1 py-3 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-shadow" style="background: #8b5cf6;">Complete Order</button>
       </div>
      </form>
     </div>
    </div>
   </div>
   <script>
+    /*
+    NOTE: Google Sheets Integration - NOT FUNCTIONAL in Canva Environment
+    
+    This code CANNOT connect to Google Sheets due to technical limitations:
+    - Browser-only code cannot authenticate with Google Sheets API
+    - CORS policies block Apps Script Web Apps in iframes
+    - Cannot store API credentials securely in frontend code
+    
+    THEORETICAL Google Apps Script Code (for reference only):
+    
+    function doPost(e) {
+      var sheet = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID').getActiveSheet();
+      var data = JSON.parse(e.postData.contents);
+      
+      sheet.appendRow([
+        new Date(),
+        data.customerName,
+        data.customerEmail,
+        data.customerAddress,
+        data.customerPhone,
+        JSON.stringify(data.items),
+        data.total
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({success: true}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    Deploy as Web App with "Anyone" access, then use the URL below:
+    const APPS_SCRIPT_URL = 'YOUR_DEPLOYED_WEB_APP_URL';
+    
+    INSTEAD: Use Canva's Data SDK (implemented below) to save all order data
+    Click the "Data" button above your Canva Code to view saved orders
+    */
+    
     // Product data - 150 products across 4 categories
     const products = [
       // Boys - 38 products
@@ -280,14 +354,14 @@
     let cartRecords = [];
     
     const defaultConfig = {
-      background_color: '#667eea',
+      background_color: '#10b981',
       surface_color: '#ffffff',
       text_color: '#1f2937',
-      primary_action_color: '#f59e0b',
-      secondary_action_color: '#10b981',
+      primary_action_color: '#ec4899',
+      secondary_action_color: '#8b5cf6',
       font_family: 'Inter',
       font_size: 16,
-      store_name: 'E-commerce ',
+      store_name: 'ShopHub',
       tagline: 'Mandeep Verma',
       cta_button: 'Shop Now'
     };
@@ -621,6 +695,32 @@
       document.getElementById('products-grid').scrollIntoView({ behavior: 'smooth' });
     });
     
+    document.querySelectorAll('.category-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const category = card.dataset.category;
+        currentCategory = category;
+        
+        // Update filter buttons
+        document.querySelectorAll('.category-filter').forEach(b => {
+          const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+          const surfaceColor = config.surface_color || defaultConfig.surface_color;
+          const textColor = config.text_color || defaultConfig.text_color;
+          const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+          
+          if (b.dataset.category === category) {
+            b.style.backgroundColor = primaryColor;
+            b.style.color = surfaceColor;
+          } else {
+            b.style.backgroundColor = '#e5e7eb';
+            b.style.color = textColor;
+          }
+        });
+        
+        renderProducts();
+        document.getElementById('products-grid').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    
     // Data SDK handler
     const dataHandler = {
       onDataChanged(data) {
@@ -720,7 +820,5 @@
     
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b08cd4d06355520',t:'MTc2NjE2NzI1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b091b28a14c5520',t:'MTc2NjE3MDQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
